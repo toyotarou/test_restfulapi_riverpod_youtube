@@ -42,11 +42,41 @@ class MyHomePage extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.read(appCount.notifier).state++,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FloatingActionButton(
+            heroTag: 'one',
+            onPressed: () => ref.read(appCount.notifier).state++,
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            heroTag: 'two',
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondPage()));
+            },
+            child: const Icon(Icons.arrow_forward),
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class SecondPage extends ConsumerWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    int count = ref.watch(appCount);
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Text(count.toString()),
+        ],
+      ),
     );
   }
 }
