@@ -42,7 +42,7 @@ Widget nextButton({
           curve: Curves.bounceIn,
         );
       } else {
-        Navigator.pushNamed(context, 'signIn');
+        Navigator.pushNamed(context, '/signIn');
       }
     },
     child: Container(
