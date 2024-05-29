@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'screens/welcome_screen.dart';
+import 'screens/welcome/welcome_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));

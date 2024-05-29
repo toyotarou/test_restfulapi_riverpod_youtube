@@ -1,10 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'welcome_notifier.dart';
 
-import '../widgets/app_onboarding_page.dart';
-
-var indexProvider = StateProvider<int>((ref) => 0);
+import '../../widgets/app_onboarding_page.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   WelcomeScreen({super.key});
@@ -14,7 +13,7 @@ class WelcomeScreen extends ConsumerWidget {
   ///
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final index = ref.watch(indexProvider);
+    final index = ref.watch(indexDotProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -24,7 +23,7 @@ class WelcomeScreen extends ConsumerWidget {
             PageView(
               controller: pageController,
               onPageChanged: (value) {
-                ref.read(indexProvider.notifier).state = value;
+                ref.read(indexDotProvider.notifier).changeIndex(index: value);
               },
               children: [
                 appOnBoardingPage(
