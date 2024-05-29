@@ -1,26 +1,70 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:test_restfulapi_riverpod_youtube/widgets/text_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+import '../widgets/app_onboarding_page.dart';
 
+var indexProvider = StateProvider<int>((ref) => 0);
+
+class WelcomeScreen extends ConsumerWidget {
+  WelcomeScreen({super.key});
+
+  final PageController pageController = PageController();
+
+  ///
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final index = ref.watch(indexProvider);
+
     return Scaffold(
       body: SafeArea(
         child: Stack(
+          alignment: Alignment.topCenter,
           children: [
             PageView(
+              controller: pageController,
+              onPageChanged: (value) {
+                ref.read(indexProvider.notifier).state = value;
+              },
               children: [
-                Column(
-                  children: [
-                    Image.asset('assets/images/reading.png'),
-                    SizedBox(height: 15),
-                    text24Normal(text: 'page 1'),
-                  ],
+                appOnBoardingPage(
+                  pageController,
+                  image: 'assets/images/reading.png',
+                  title: 'page 1',
+                  subTitle: 'first page',
+                  index: 1,
+                ),
+                appOnBoardingPage(
+                  pageController,
+                  image: 'assets/images/man.png',
+                  title: 'page 2',
+                  subTitle: 'Second page',
+                  index: 2,
+                ),
+                appOnBoardingPage(
+                  pageController,
+                  image: 'assets/images/boy.png',
+                  title: 'page 3',
+                  subTitle: 'Third page',
+                  index: 3,
                 ),
               ],
-            )
+            ),
+            Positioned(
+              bottom: 50,
+              child: DotsIndicator(
+                position: index,
+                dotsCount: 3,
+                mainAxisAlignment: MainAxisAlignment.center,
+                decorator: DotsDecorator(
+                  size: const Size.square(20.0),
+                  activeSize: const Size(30.0, 10.0),
+                  activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
