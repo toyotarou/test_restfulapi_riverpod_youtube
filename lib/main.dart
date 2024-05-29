@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:test_restfulapi_riverpod_youtube/screens/welcome_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyHomePage(),
+      home: WelcomeScreen(),
     );
   }
 }
