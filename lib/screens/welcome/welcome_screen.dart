@@ -32,6 +32,7 @@ class WelcomeScreen extends ConsumerWidget {
                   title: 'page 1',
                   subTitle: 'first page',
                   index: 1,
+                  context: context,
                 ),
                 appOnBoardingPage(
                   pageController,
@@ -39,6 +40,7 @@ class WelcomeScreen extends ConsumerWidget {
                   title: 'page 2',
                   subTitle: 'Second page',
                   index: 2,
+                  context: context,
                 ),
                 appOnBoardingPage(
                   pageController,
@@ -46,6 +48,7 @@ class WelcomeScreen extends ConsumerWidget {
                   title: 'page 3',
                   subTitle: 'Third page',
                   index: 3,
+                  context: context,
                 ),
               ],
             ),
