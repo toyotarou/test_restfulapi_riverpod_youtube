@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/sign_in/sign_in_screen.dart';
+
 
 import 'app_box_shadow.dart';
 import 'text_widget.dart';
@@ -42,12 +42,7 @@ Widget nextButton({
           curve: Curves.bounceIn,
         );
       } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SignInScreen(),
-          ),
-        );
+        Navigator.pushNamed(context, 'signIn');
       }
     },
     child: Container(

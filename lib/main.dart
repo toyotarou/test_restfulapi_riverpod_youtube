@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'screens/sign_in/sign_in_screen.dart';
 
 import 'screens/welcome/welcome_screen.dart';
 
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => WelcomeScreen(),
+        'signIn': (context) => const SignInScreen(),
+      },
     );
   }
 }
