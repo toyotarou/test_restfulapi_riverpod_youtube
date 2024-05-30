@@ -68,6 +68,14 @@ class SignUpController {
         toastInfo(msg: "Asn email has been to verify your account. Please open that email and confirm your identity");
         context.pop();
       }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        toastInfo(msg: 'password is weak');
+      } else if (e.code == 'email-already-in-use') {
+        toastInfo(msg: 'email already use');
+      } else if (e.code == 'user-not-fond') {
+        toastInfo(msg: 'user not found');
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
