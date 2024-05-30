@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
 
@@ -38,7 +37,9 @@ class SignInScreen extends StatelessWidget {
               const SizedBox(height: 100),
               Container(
                 alignment: Alignment.center,
-                child: appButton(buttonText: 'LOGIN'),
+                child: appButton(
+                  buttonText: 'LOGIN',
+                ),
               ),
               const SizedBox(height: 20),
               Container(
@@ -47,6 +48,7 @@ class SignInScreen extends StatelessWidget {
                   buttonText: 'REGIST',
                   color: Colors.white,
                   borderColor: Colors.indigo,
+                  func: () => Navigator.pushNamed(context, "/register"),
                 ),
               ),
             ],

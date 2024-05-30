@@ -44,7 +44,13 @@ Widget _loginButton({required String iconPath}) {
   );
 }
 
-Widget appTextField({required String text, required String iconName, required String hintText, bool obscureText = false}) {
+Widget appTextField({
+  required String text,
+  required String iconName,
+  required String hintText,
+  bool obscureText = false,
+  void Function(String value)? func,
+}) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: Column(
@@ -58,6 +64,7 @@ Widget appTextField({required String text, required String iconName, required St
               appImage(imagePath: iconName, width: 50.w, height: 50.h),
               Expanded(
                 child: TextField(
+                  onChanged: (value) => func!(value),
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                     hintText: hintText,
@@ -66,7 +73,6 @@ Widget appTextField({required String text, required String iconName, required St
                     focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
                     disabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent)),
                   ),
-                  onChanged: (value) {},
                   autocorrect: false,
                   obscureText: obscureText,
                   onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),

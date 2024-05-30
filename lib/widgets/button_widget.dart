@@ -8,9 +8,10 @@ Widget appButton({
   required String buttonText,
   Color color = AppColors.primaryBackground,
   Color borderColor = AppColors.primaryFourthElementText,
+  void Function()? func,
 }) {
   return GestureDetector(
-    onTap: () {},
+    onTap: func,
     child: Container(
       width: 325.w,
       height: 50.h,

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_restfulapi_riverpod_youtube/app_styles.dart';
 import 'screens/sign_in/sign_in_screen.dart';
 
+import 'screens/sign_up/sign_up_screen.dart';
 import 'screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
           routes: {
             "/": (context) => WelcomeScreen(),
             "/signIn": (context) => const SignInScreen(),
+            "/register":(context)=>const SignUpScreen(),
           },
         );
       },
