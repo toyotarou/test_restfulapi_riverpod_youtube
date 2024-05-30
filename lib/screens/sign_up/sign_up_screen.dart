@@ -104,6 +104,16 @@ class _SignUpState extends ConsumerState<SignUpScreen> {
                     ),
                   ),
                   //app register button
+
+                  ElevatedButton(
+                    onPressed: () {
+                      ref.read(registerNotifierProvider.notifier).onUserNameChange('toyohide0530');
+                      ref.read(registerNotifierProvider.notifier).onUserEmailChange('toyohide0530@test.com');
+                      ref.read(registerNotifierProvider.notifier).onUserPasswordChange('password');
+                      ref.read(registerNotifierProvider.notifier).onUserRePasswordChange('password');
+                    },
+                    child: Text('dummy'),
+                  ),
                 ],
               ),
             )),
